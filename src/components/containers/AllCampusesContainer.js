@@ -9,13 +9,18 @@ import Header from './Header';
 import { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { fetchAllCampusesThunk } from "../../store/thunks";
+import { fetchAllCampusesThunk,
+deleteCampusThunk
+ } from "../../store/thunks";
 import { AllCampusesView } from "../views";
+import { withRouter } from "react-router-dom";
 
 class AllCampusesContainer extends Component {
+
+
   // Get all campuses data from back-end database
   componentDidMount() {
-    console.log(this.props);
+    
     this.props.fetchAllCampuses();
   }
 
@@ -26,6 +31,7 @@ class AllCampusesContainer extends Component {
         <Header />
         <AllCampusesView
           allCampuses={this.props.allCampuses}
+          deleteCampus={this.props.deleteCampus}
         />
       </div>
     );
@@ -45,8 +51,11 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     fetchAllCampuses: () => dispatch(fetchAllCampusesThunk()),
+    deleteCampus:(campusId) => dispatch(deleteCampusThunk(campusId)),
   };
 };
+
+
 
 // Type check props;
 AllCampusesContainer.propTypes = {
@@ -57,4 +66,4 @@ AllCampusesContainer.propTypes = {
 // Export store-connected container by default
 // AllCampusesContainer uses "connect" function to connect to Redux Store and to read values from the Store 
 // (and re-read the values when the Store State updates).
-export default connect(mapState, mapDispatch)(AllCampusesContainer);
+export default withRouter(connect(mapState, mapDispatch)(AllCampusesContainer));
