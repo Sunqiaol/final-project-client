@@ -65,6 +65,13 @@ export const editStudent = (student) => {
   };
 };
 
+export const editCampus = (campus) =>{
+  return {
+    type: at.EDIT_CAMPUS,
+    payload: campus,
+  }
+}
+
 //Single Student
 export const fetchStudent = (student) => {
   return {
@@ -72,3 +79,19 @@ export const fetchStudent = (student) => {
     payload: student,
   };
 };
+
+
+export const removeStudent = (student) =>{
+  return {
+    type: at.REMOVE_STUDENT,
+    payload: student,
+  }
+}
+
+
+export const addToCampus = (student) =>{
+  return {
+    type: at.ADDTO_CAMPUS,
+    payload: student,
+  }
+}

@@ -34,37 +34,42 @@ const useStyles = makeStyles( () => ({
   },
 }));
 
-const NewStudentView = (props) => {
-  const {handleChange, handleSubmit } = props;
-  
+const EditCampusView = (props) => {
+  const {campus,handleChange, handleSubmit } = props;
   const classes = useStyles();
-  console.log(props);
+  
   // Render a New Student view with an input form
   return (
     <div>
-      <h1>New Student</h1>
 
+      <h1>{campus.name}</h1>
       <div className={classes.root}>
         <div className={classes.formContainer}>
           <div className={classes.formTitle}>
             <Typography style={{fontWeight: 'bold', fontFamily: 'Courier, sans-serif', fontSize: '20px', color: '#11153e'}}>
-              Add a Student
+              Edit Campus
             </Typography>
           </div>
           <form style={{textAlign: 'center'}} onSubmit={(e) => handleSubmit(e)}>
-            <label style= {{color:'#11153e', fontWeight: 'bold'}}>First Name: </label>
-            <input type="text" name="firstname" onChange ={(e) => handleChange(e)} />
+            <label style= {{color:'#11153e', fontWeight: 'bold'}}>Name: </label>
+            <input type="text"  name="name"   onChange ={(e) => handleChange(e)} placeholder= {campus.name} />
             <br/>
             <br/>
 
-            <label style={{color:'#11153e', fontWeight: 'bold'}}>Last Name: </label>
-            <input type="text" name="lastname" onChange={(e) => handleChange(e)} />
+            <label style={{color:'#11153e', fontWeight: 'bold'}}>ImageUrl: </label>
+            <input type="text" name="imageUrl" onChange={(e) => handleChange(e)} placeholder= {campus.imageUrl} />
             <br/>
             <br/>
 
-            <label style={{color:'#11153e', fontWeight: 'bold'}}>Campus Id: </label>
-            <input type="text" name="campusId" onChange={(e) => handleChange(e)} />
+           
+            
+            <label style={{color:'#11153e', fontWeight: 'bold'}}>Address: </label>
+            <input type="text" name="address" onChange={(e) => handleChange(e)} placeholder={campus.address}/>
             <br/>
+            <br/> 
+            
+            <label style={{color:'#11153e', fontWeight: 'bold'}}>Description: </label>
+            <textarea name="description" onChange={(e) => handleChange(e)} placeholder={campus.description} style={{width: '100%', height: '150px'}} />
             <br/>
 
             <Button variant="contained" color="primary" type="submit">
@@ -79,4 +84,4 @@ const NewStudentView = (props) => {
   )
 }
 
-export default NewStudentView;
+export default EditCampusView;
