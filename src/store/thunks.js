@@ -114,6 +114,8 @@ export const editStudentThunk = student => async dispatch => {  // The THUNK
   }
 };
 
+
+
 export const deleteStudentFromCampusThunk = student => async dispatch =>{
   try{
     student.campusId = null;
