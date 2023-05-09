@@ -18,6 +18,7 @@ const campus = (state = initialState, action) => {  // Use "initialState" as def
     case FETCH_CAMPUS:
       return action.payload;
     
+    
     default:
       // If the Reducer doesn't recognize the Action Type, returns the previous (current) State unchanged.
       return state;
